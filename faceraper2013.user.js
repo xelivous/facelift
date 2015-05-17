@@ -1,8 +1,8 @@
 // ==UserScript==
 // @name            Faceraper2013
 // @namespace       com.facepunch.facelift2013
-// @updateURL       https://github.com/xelivous/facelifto/raw/master/facelift2013.user.js
-// @downloadURL     https://github.com/xelivous/facelifto/raw/master/facelift2013.user.js
+// @updateURL       https://github.com/xelivous/facelift/raw/master/faceraper2013.user.js
+// @downloadURL     https://github.com/xelivous/facelift/raw/master/faceraper2013.user.js
 // @description     365 pounds in stone
 // @include         /.*facepunch\.com/.*/
 // @license         WTFPL; http://sam.zoy.org/wtfpl/
