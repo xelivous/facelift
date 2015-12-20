@@ -1,4 +1,4 @@
-// ==UserScript==
+﻿// ==UserScript==
 // @name            Faceraper2013
 // @namespace       com.facepunch.facelift2013
 // @updateURL       https://github.com/xelivous/facelift/raw/master/faceraper2013.user.js
@@ -7,7 +7,7 @@
 // @include         /.*facepunch\.com/.*/
 // @license         WTFPL; http://sam.zoy.org/wtfpl/
 // @grant           none
-// @version         1.2.8
+// @version         1.2.9
 // ==/UserScript==
 
 // user definable settings, their defaults, and helper methods
@@ -980,71 +980,122 @@ function FR_FUN_CREATE() {
             Scoredata.BBCodeCount = FR_CFG.getInt("FL_BBCodeCount") * PostTable.BBCodeCount;
             TotalScore = TotalScore + Scoredata.BBCodeCount;
 
-
+			
             //ratings, multiplied by rating count
-            if (PostTable.RatingAgree){
-                Scoredata.RatingAgree = FR_CFG.getInt("FL_RatingAgree") * PostTable.RatingAgree; TotalScore = TotalScore + Scoredata.RatingAgree;
-            } else { Scoredata.RatingAgree = 0; }
-            if (PostTable.RatingFunny){
-                Scoredata.RatingFunny = FR_CFG.getInt("FL_RatingFunny") * PostTable.RatingFunny; TotalScore = TotalScore + Scoredata.RatingFunny;
-            } else { Scoredata.RatingFunny = 0; }
-            if (PostTable.RatingDumb){
-                Scoredata.RatingDumb = FR_CFG.getInt("FL_RatingDumb") * PostTable.RatingDumb; TotalScore = TotalScore + Scoredata.RatingDumb;
-            } else { Scoredata.RatingDumb = 0; }
-            if (PostTable.RatingDisagree){
-                Scoredata.RatingDisagree = FR_CFG.getInt("FL_RatingDisagree") * PostTable.RatingDisagree; TotalScore = TotalScore + Scoredata.RatingDisagree;
-            } else { Scoredata.RatingDisagree = 0; }
-            if (PostTable.RatingInform){
-                Scoredata.RatingInform = FR_CFG.getInt("FL_RatingInform") * PostTable.RatingInform; TotalScore = TotalScore + Scoredata.RatingInform;
-            } else { Scoredata.RatingInform = 0; }
-            if (PostTable.RatingFriendly){
-                Scoredata.RatingFriendly = FR_CFG.getInt("FL_RatingFriendly") * PostTable.RatingFriendly; TotalScore = TotalScore + Scoredata.RatingFriendly;
-            } else { Scoredata.RatingFriendly = 0; }
-            if (PostTable.RatingUseful){
-                Scoredata.RatingUseful = FR_CFG.getInt("FL_RatingUseful") * PostTable.RatingUseful; TotalScore = TotalScore + Scoredata.RatingUseful;
-            } else { Scoredata.RatingUseful = 0; }
-            if (PostTable.RatingOptimistic){
-                Scoredata.RatingOptimistic = FR_CFG.getInt("FL_RatingOptimistic") * PostTable.RatingOptimistic; TotalScore = TotalScore + Scoredata.RatingOptimistic;
-            } else { Scoredata.RatingOptimistic = 0; }
-            if (PostTable.RatingArtistic){
-                Scoredata.RatingArtistic = FR_CFG.getInt("FL_RatingArtistic") * PostTable.RatingArtistic; TotalScore = TotalScore + Scoredata.RatingArtistic;
-            } else { Scoredata.RatingArtistic = 0; }
-            if (PostTable.RatingLate){
-                Scoredata.RatingLate = FR_CFG.getInt("FL_RatingLate") * PostTable.RatingLate; TotalScore = TotalScore + Scoredata.RatingLate;
-            } else { Scoredata.RatingLate = 0; }
-            if (PostTable.RatingBadSpell){
-                Scoredata.RatingBadSpell = FR_CFG.getInt("FL_RatingBadSpell") * PostTable.RatingBadSpell; TotalScore = TotalScore + Scoredata.RatingBadSpell;
-            } else { Scoredata.RatingBadSpell = 0; }
-            if (PostTable.RatingBadRead){
-                Scoredata.RatingBadRead = FR_CFG.getInt("FL_RatingBadRead") * PostTable.RatingBadRead; TotalScore = TotalScore + Scoredata.RatingBadRead;
-            } else { Scoredata.RatingBadRead = 0; }
-            if (PostTable.RatingZing){
-                Scoredata.RatingZing = FR_CFG.getInt("FL_RatingZing") * PostTable.RatingZing; TotalScore = TotalScore + Scoredata.RatingZing;
-            } else { Scoredata.RatingZing = 0; }
-            if (PostTable.RatingOIFY){
-                Scoredata.RatingOIFY = FR_CFG.getInt("FL_RatingOIFY") * PostTable.RatingOIFY; TotalScore = TotalScore + Scoredata.RatingOIFY;
-            } else { Scoredata.RatingOIFY = 0; }
-            if (PostTable.RatingProgKing){
-                Scoredata.RatingProgKing = FR_CFG.getInt("FL_RatingProgKing") * PostTable.RatingProgKing; TotalScore = TotalScore + Scoredata.RatingProgKing;
-            } else { Scoredata.RatingProgKing = 0; }
-            if (PostTable.RatingLuaKing){
-                Scoredata.RatingLuaKing = FR_CFG.getInt("FL_RatingLuaKing") * PostTable.RatingLuaKing; TotalScore = TotalScore + Scoredata.RatingLuaKing;
-            } else { Scoredata.RatingLuaKing = 0; }
-            if (PostTable.RatingLuaHelp){
-                Scoredata.RatingLuaHelp = FR_CFG.getInt("FL_RatingLuaHelp") * PostTable.RatingLuaHelp; TotalScore = TotalScore + Scoredata.RatingLuaHelp;
-            } else { Scoredata.RatingLuaHelp = 0; }
-            if (PostTable.RatingMapKing){
-                Scoredata.RatingMapKing = FR_CFG.getInt("FL_RatingMapKing") * PostTable.RatingMapKing; TotalScore = TotalScore + Scoredata.RatingMapKing;
-            } else { Scoredata.RatingMapKing = 0; }
-            if (PostTable.RatingSmarked){
-                Scoredata.RatingSmarked = FR_CFG.getInt("FL_RatingSmarked") * PostTable.RatingSmarked; TotalScore = TotalScore + Scoredata.RatingSmarked;
-            } else { Scoredata.RatingSmarked = 0; }
-            if (PostTable.RatingWinner){
-                Scoredata.RatingWinner = FR_CFG.getInt("FL_RatingWinner") * PostTable.RatingWinner; TotalScore = TotalScore + Scoredata.RatingWinner;
-            } else { Scoredata.RatingWinner = 0; }
-			if (PostTable.RatingMoustache){
-                Scoredata.RatingMoustache = FR_CFG.getInt("FL_RatingMoustache") * PostTable.RatingMoustache; TotalScore = TotalScore + Scoredata.RatingMoustache;
-            } else { Scoredata.RatingMoustache = 0; }
+			Scoredata.RatingAgree = 0;
+			Scoredata.RatingFunny = 0;
+			Scoredata.RatingDumb = 0;
+			Scoredata.RatingDisagree = 0;
+			Scoredata.RatingInform = 0;
+			Scoredata.RatingFriendly = 0;
+			Scoredata.RatingUseful = 0;
+			Scoredata.RatingOptimistic = 0;
+			Scoredata.RatingArtistic = 0;
+			Scoredata.RatingLate = 0;
+			Scoredata.RatingBadSpell = 0;
+			Scoredata.RatingBadRead = 0;
+			Scoredata.RatingZing = 0;
+			Scoredata.RatingOIFY = 0;
+			Scoredata.RatingProgKing = 0;
+			Scoredata.RatingLuaKing = 0;
+			Scoredata.RatingLuaHelp = 0;
+			Scoredata.RatingMapKing = 0;
+			Scoredata.RatingSmarked = 0;
+			Scoredata.RatingWinner = 0;
+			Scoredata.RatingMoustache = 0;
+			
+			if (PostTable.Ratings) {
+				PostTable.Ratings.forEach(function(rating) {
+					switch (rating.Name) {
+						case "Agree":
+							Scoredata.RatingAgree = FR_CFG.getInt("FL_RatingAgree") * rating.Count;
+							TotalScore = TotalScore + Scoredata.RatingAgree;
+							break;
+						case "Funny":
+							Scoredata.RatingFunny = FR_CFG.getInt("FL_RatingFunny") * rating.Count;
+							TotalScore = TotalScore + Scoredata.RatingFunny;
+							break;
+						case "Dumb":
+							Scoredata.RatingDumb = FR_CFG.getInt("FL_RatingDumb") * rating.Count;
+							TotalScore = TotalScore + Scoredata.RatingDumb;
+							break;
+						case "Disagree":
+							Scoredata.RatingDisagree = FR_CFG.getInt("FL_RatingDisagree") * rating.Count;
+							TotalScore = TotalScore + Scoredata.RatingDisagree;
+							break;
+						case "Inform":
+							Scoredata.RatingInform = FR_CFG.getInt("FL_RatingInform") * rating.Count;
+							TotalScore = TotalScore + Scoredata.RatingInform;
+							break;
+						case "Friendly":
+							Scoredata.RatingFriendly = FR_CFG.getInt("FL_RatingFriendly") * rating.Count;
+							TotalScore = TotalScore + Scoredata.RatingFriendly;
+							break;
+						case "Useful":
+							Scoredata.RatingUseful = FR_CFG.getInt("FL_RatingUseful") * rating.Count;
+							TotalScore = TotalScore + Scoredata.RatingUseful;
+							break;
+						case "Optimistic":
+							Scoredata.RatingOptimistic = FR_CFG.getInt("FL_RatingOptimistic") * rating.Count;
+							TotalScore = TotalScore + Scoredata.RatingOptimistic;
+							break;
+						case "Artistic":
+							Scoredata.RatingArtistic = FR_CFG.getInt("FL_RatingArtistic") * rating.Count;
+							TotalScore = TotalScore + Scoredata.RatingArtistic;
+							break;
+						case "Late":
+							Scoredata.RatingLate = FR_CFG.getInt("FL_RatingLate") * rating.Count;
+							TotalScore = TotalScore + Scoredata.RatingLate;
+							break;
+						case "BadSpell":
+							Scoredata.RatingBadSpell = FR_CFG.getInt("FL_RatingBadSpell") * rating.Count;
+							TotalScore = TotalScore + Scoredata.RatingBadSpell;
+							break;
+						case "BadRead":
+							Scoredata.RatingBadRead = FR_CFG.getInt("FL_RatingBadRead") * rating.Count;
+							TotalScore = TotalScore + Scoredata.RatingBadRead;
+							break;
+						case "Zing":
+							Scoredata.RatingZing = FR_CFG.getInt("FL_RatingZing") * rating.Count;
+							TotalScore = TotalScore + Scoredata.RatingZing;
+							break;
+						case "OIFY":
+							Scoredata.RatingOIFY = FR_CFG.getInt("FL_RatingOIFY") * rating.Count;
+							TotalScore = TotalScore + Scoredata.RatingOIFY;
+							break;
+						case "ProgKing":
+							Scoredata.RatingProgKing = FR_CFG.getInt("FL_RatingProgKing") * rating.Count;
+							TotalScore = TotalScore + Scoredata.RatingProgKing;
+							break;
+						case "LuaKing":
+							Scoredata.RatingLuaKing = FR_CFG.getInt("FL_RatingLuaKing") * rating.Count;
+							TotalScore = TotalScore + Scoredata.RatingLuaKing;
+							break;
+						case "LuaHelp":
+							Scoredata.RatingLuaHelp = FR_CFG.getInt("FL_RatingLuaHelp") * rating.Count;
+							TotalScore = TotalScore + Scoredata.RatingLuaHelp;
+							break;
+						case "MapKing":
+							Scoredata.RatingMapKing = FR_CFG.getInt("FL_RatingMapKing") * rating.Count;
+							TotalScore = TotalScore + Scoredata.RatingMapKing;
+							break;
+						case "Smarked":
+							Scoredata.RatingSmarked = FR_CFG.getInt("FL_RatingSmarked") * rating.Count;
+							TotalScore = TotalScore + Scoredata.RatingSmarked;
+							break;
+						case "Winner":
+							Scoredata.RatingWinner = FR_CFG.getInt("FL_RatingWinner") * rating.Count;
+							TotalScore = TotalScore + Scoredata.RatingWinner;
+							break;
+						case "Moustache":
+							Scoredata.RatingMoustache = FR_CFG.getInt("FL_RatingMoustache") * rating.Count;
+							TotalScore = TotalScore + Scoredata.RatingMoustache;
+							break;
+						default:
+							console.log("Unknown rating name: "+rating.Name);
+					}
+				})
+			}
 
             Scoredata.TotalScore = TotalScore;
             return Scoredata;
@@ -1163,52 +1214,16 @@ function FR_FUN_CREATE() {
                     var RatingNode = document.getElementById("rating_"+Postdata.PostID);
                     if (RatingNode.childElementCount > 0) {
                         Postdata.HasRatings = true;
+						Postdata.Ratings = []
 
                         for (var x=0; x<RatingNode.childNodes.length; x++){
                             if (RatingNode.childNodes[x].tagName === "SPAN") {
-                                if (RatingNode.childNodes[x].childNodes[0].alt === "Agree") {
-                                    Postdata.RatingAgree = RatingNode.childNodes[x].childNodes[2].textContent;
-                                } else if (RatingNode.childNodes[x].childNodes[0].alt === "Funny") {
-                                    Postdata.RatingFunny = RatingNode.childNodes[x].childNodes[2].textContent;
-                                } else if (RatingNode.childNodes[x].childNodes[0].alt === "Dumb") {
-                                    Postdata.RatingDumb = RatingNode.childNodes[x].childNodes[2].textContent;
-                                } else if (RatingNode.childNodes[x].childNodes[0].alt === "Disagree") {
-                                    Postdata.RatingDisagree = RatingNode.childNodes[x].childNodes[2].textContent;
-                                } else if (RatingNode.childNodes[x].childNodes[0].alt === "Informative") {
-                                    Postdata.RatingInform = RatingNode.childNodes[x].childNodes[2].textContent;
-                                } else if (RatingNode.childNodes[x].childNodes[0].alt === "Friendly") {
-                                    Postdata.RatingFriendly = RatingNode.childNodes[x].childNodes[2].textContent;
-                                } else if (RatingNode.childNodes[x].childNodes[0].alt === "Useful") {
-                                    Postdata.RatingUseful = RatingNode.childNodes[x].childNodes[2].textContent;
-                                } else if (RatingNode.childNodes[x].childNodes[0].alt === "Optimistic") {
-                                    Postdata.RatingOptimistic = RatingNode.childNodes[x].childNodes[2].textContent;
-                                } else if (RatingNode.childNodes[x].childNodes[0].alt === "Artistic") {
-                                    Postdata.RatingArtistic = RatingNode.childNodes[x].childNodes[2].textContent;
-                                } else if (RatingNode.childNodes[x].childNodes[0].alt === "Late") {
-                                    Postdata.RatingLate = RatingNode.childNodes[x].childNodes[2].textContent;
-                                } else if (RatingNode.childNodes[x].childNodes[0].alt === "Bad Spelling") {
-                                    Postdata.RatingBadSpell = RatingNode.childNodes[x].childNodes[2].textContent;
-                                } else if (RatingNode.childNodes[x].childNodes[0].alt === "Bad Reading") {
-                                    Postdata.RatingBadRead = RatingNode.childNodes[x].childNodes[2].textContent;
-                                } else if (RatingNode.childNodes[x].childNodes[0].alt === "Zing") {
-                                    Postdata.RatingZing = RatingNode.childNodes[x].childNodes[2].textContent;
-                                } else if (RatingNode.childNodes[x].childNodes[0].alt === "OIFY Pinknipple") {
-                                    Postdata.RatingOIFY = RatingNode.childNodes[x].childNodes[2].textContent;
-                                } else if (RatingNode.childNodes[x].childNodes[0].alt === "Programming King") {
-                                    Postdata.RatingProgKing = RatingNode.childNodes[x].childNodes[2].textContent;
-                                } else if (RatingNode.childNodes[x].childNodes[0].alt === "Lua King") {
-                                    Postdata.RatingLuaKing = RatingNode.childNodes[x].childNodes[2].textContent;
-                                } else if (RatingNode.childNodes[x].childNodes[0].alt === "Lua Helper") {
-                                    Postdata.RatingLuaHelp = RatingNode.childNodes[x].childNodes[2].textContent;
-                                } else if (RatingNode.childNodes[x].childNodes[0].alt === "Mapping King") {
-                                    Postdata.RatingMapKing = RatingNode.childNodes[x].childNodes[2].textContent;
-                                } else if (RatingNode.childNodes[x].childNodes[0].alt === "Smarked") {
-                                    Postdata.RatingSmarked = RatingNode.childNodes[x].childNodes[2].textContent;
-                                } else if (RatingNode.childNodes[x].childNodes[0].alt === "Winner") {
-                                    Postdata.RatingWinner = RatingNode.childNodes[x].childNodes[2].textContent;
-                                } else if (RatingNode.childNodes[x].childNodes[0].alt === "Moustache") {
-                                    Postdata.RatingMoustache = RatingNode.childNodes[x].childNodes[2].textContent;
-                                }
+								var Rating = {}
+								//Grab the rating's name from the img alt, count from the strong tag (this will probably work for another year...)
+								Rating.Name = RatingNode.childNodes[x].childNodes[0].childNodes[0].alt;
+								Rating.Count = RatingNode.childNodes[x].childNodes[2].textContent;
+
+								Postdata.Ratings.push(Rating);
                             }
                         }
                     }
@@ -2591,29 +2606,33 @@ function FR_FUN_CREATE() {
                             crapmenu.innerHTML += "<div style='display: inline-block; float: none;' class='button "+FR_FUN.calcPolarity(postscore.NewPost)+"'>NewPost: "+PostTable[x].NewPost+" ("+postscore.NewPost+")</div>";
                             crapmenu.innerHTML += "<div style='display: inline-block; float: none;' class='button '>CanReply: "+PostTable[x].CanReply+"</div>";
                             crapmenu.innerHTML += "<div style='display: inline-block; float: none;' class='button "+FR_FUN.calcPolarity(postscore.HasRatings)+"'>PostRated: "+PostTable[x].HasRatings+" ("+postscore.HasRatings+")</div>";
-                            if ( PostTable[x].HasRatings) {
-                                if ( PostTable[x].RatingAgree)      { crapmenu.innerHTML += "<div style='display: inline-block; float: none;' class='button "+FR_FUN.calcPolarity(postscore.RatingAgree)+"'>Rated Agree: "+PostTable[x].RatingAgree+" ("+postscore.RatingAgree+")</div>"; }
-                                if ( PostTable[x].RatingFunny)      { crapmenu.innerHTML += "<div style='display: inline-block; float: none;' class='button "+FR_FUN.calcPolarity(postscore.RatingFunny)+"'>Rated Funny: "+PostTable[x].RatingFunny+" ("+postscore.RatingFunny+")</div>"; }
-                                if ( PostTable[x].RatingWinner)     { crapmenu.innerHTML += "<div style='display: inline-block; float: none;' class='button "+FR_FUN.calcPolarity(postscore.RatingWinner)+"'>Rated Winner: "+PostTable[x].RatingWinner+" ("+postscore.RatingWinner+")</div>"; }
-                                if ( PostTable[x].RatingDumb)       { crapmenu.innerHTML += "<div style='display: inline-block; float: none;' class='button "+FR_FUN.calcPolarity(postscore.RatingDumb)+"'>Rated Dumb: "+PostTable[x].RatingDumb+" ("+postscore.RatingDumb+")</div>"; }
-                                if ( PostTable[x].RatingDisagree)   { crapmenu.innerHTML += "<div style='display: inline-block; float: none;' class='button "+FR_FUN.calcPolarity(postscore.RatingDisagree)+"'>Rated Disagree: "+PostTable[x].RatingDisagree+" ("+postscore.RatingDisagree+")</div>"; }
-                                if ( PostTable[x].RatingInform)     { crapmenu.innerHTML += "<div style='display: inline-block; float: none;' class='button "+FR_FUN.calcPolarity(postscore.RatingInform)+"'>Rated Informative: "+PostTable[x].RatingInform+" ("+postscore.RatingInform+")</div>"; }
-                                if ( PostTable[x].RatingFriendly)   { crapmenu.innerHTML += "<div style='display: inline-block; float: none;' class='button "+FR_FUN.calcPolarity(postscore.RatingFriendly)+"'>Rated Friendly: "+PostTable[x].RatingFriendly+" ("+postscore.RatingFriendly+")</div>"; }
-                                if ( PostTable[x].RatingUseful)     { crapmenu.innerHTML += "<div style='display: inline-block; float: none;' class='button "+FR_FUN.calcPolarity(postscore.RatingUseful)+"'>Rated Useful: "+PostTable[x].RatingUseful+" ("+postscore.RatingUseful+")</div>"; }
-                                if ( PostTable[x].RatingOptimistic) { crapmenu.innerHTML += "<div style='display: inline-block; float: none;' class='button "+FR_FUN.calcPolarity(postscore.RatingOptimistic)+"'>Rated Optimistic: "+PostTable[x].RatingOptimistic+" ("+postscore.RatingOptimistic+")</div>"; }
-                                if ( PostTable[x].RatingArtistic)   { crapmenu.innerHTML += "<div style='display: inline-block; float: none;' class='button "+FR_FUN.calcPolarity(postscore.RatingArtistic)+"'>Rated Artistic: "+PostTable[x].RatingArtistic+" ("+postscore.RatingArtistic+")</div>"; }
-                                if ( PostTable[x].RatingLate)       { crapmenu.innerHTML += "<div style='display: inline-block; float: none;' class='button "+FR_FUN.calcPolarity(postscore.RatingLate)+"'>Rated Late: "+PostTable[x].RatingLate+" ("+postscore.RatingLate+")</div>"; }
-                                if ( PostTable[x].RatingBadSpell)   { crapmenu.innerHTML += "<div style='display: inline-block; float: none;' class='button "+FR_FUN.calcPolarity(postscore.RatingBadSpell)+"'>Rated Bad Spelling: "+PostTable[x].RatingBadSpell+" ("+postscore.RatingBadSpell+")</div>"; }
-                                if ( PostTable[x].RatingBadRead)    { crapmenu.innerHTML += "<div style='display: inline-block; float: none;' class='button "+FR_FUN.calcPolarity(postscore.RatingBadRead)+"'>Rated Bad Reading: "+PostTable[x].RatingBadRead+" ("+postscore.RatingBadRead+")</div>"; }
-                                if ( PostTable[x].RatingZing)       { crapmenu.innerHTML += "<div style='display: inline-block; float: none;' class='button "+FR_FUN.calcPolarity(postscore.RatingZing)+"'>Rated Zing: "+PostTable[x].RatingZing+" ("+postscore.RatingZing+")</div>"; }
-                                if ( PostTable[x].RatingOIFY)       { crapmenu.innerHTML += "<div style='display: inline-block; float: none;' class='button "+FR_FUN.calcPolarity(postscore.RatingOIFY)+"'>Rated Pinknipple: "+PostTable[x].RatingOIFY+" ("+postscore.RatingOIFY+")</div>"; }
-                                if ( PostTable[x].RatingProgKing)   { crapmenu.innerHTML += "<div style='display: inline-block; float: none;' class='button "+FR_FUN.calcPolarity(postscore.RatingProgKing)+"'>Rated Programming King: "+PostTable[x].RatingProgKing+" ("+postscore.RatingProgKing+")</div>"; }
-                                if ( PostTable[x].RatingLuaKing)    { crapmenu.innerHTML += "<div style='display: inline-block; float: none;' class='button "+FR_FUN.calcPolarity(postscore.RatingLuaKing)+"'>Rated Lua King: "+PostTable[x].RatingLuaKing+" ("+postscore.RatingLuaKing+")</div>"; }
-                                if ( PostTable[x].RatingLuaHelp)    { crapmenu.innerHTML += "<div style='display: inline-block; float: none;' class='button "+FR_FUN.calcPolarity(postscore.RatingLuaHelp)+"'>Rated Lua Helper: "+PostTable[x].RatingLuaHelp+" ("+postscore.RatingLuaHelp+")</div>"; }
-                                if ( PostTable[x].RatingMapKing)    { crapmenu.innerHTML += "<div style='display: inline-block; float: none;' class='button "+FR_FUN.calcPolarity(postscore.RatingMapKing)+"'>Rated Mapping king: "+PostTable[x].RatingMapKing+" ("+postscore.RatingMapKing+")</div>"; }
-                                if ( PostTable[x].RatingSmarked)    { crapmenu.innerHTML += "<div style='display: inline-block; float: none;' class='button "+FR_FUN.calcPolarity(postscore.RatingSmarked)+"'>Rated Smarked: "+PostTable[x].RatingSmarked+" ("+postscore.RatingSmarked+")</div>"; }
-                                if ( PostTable[x].RatingMoustache)  { crapmenu.innerHTML += "<div style='display: inline-block; float: none;' class='button "+FR_FUN.calcPolarity(postscore.RatingMoustache)+"'>Rated Moustache: "+PostTable[x].RatingMoustache+" ("+postscore.RatingMoustache+")</div>"; }
+                            
+							if (PostTable[x].Ratings) {
+								PostTable[x].Ratings.forEach(function(rating) {
+									if (rating.Name === "Agree")      { crapmenu.innerHTML += "<div style='display: inline-block; float: none;' class='button "+FR_FUN.calcPolarity(postscore.RatingAgree)+"'>Rated Agree: "+rating.Count+" ("+postscore.RatingAgree+")</div>"; }
+									if (rating.Name === "Funny")      { crapmenu.innerHTML += "<div style='display: inline-block; float: none;' class='button "+FR_FUN.calcPolarity(postscore.RatingFunny)+"'>Rated Funny: "+rating.Count+" ("+postscore.RatingFunny+")</div>"; }
+									if (rating.Name === "Winner")     { crapmenu.innerHTML += "<div style='display: inline-block; float: none;' class='button "+FR_FUN.calcPolarity(postscore.RatingWinner)+"'>Rated Winner: "+rating.Count+" ("+postscore.RatingWinner+")</div>"; }
+									if (rating.Name === "Dumb")       { crapmenu.innerHTML += "<div style='display: inline-block; float: none;' class='button "+FR_FUN.calcPolarity(postscore.RatingDumb)+"'>Rated Dumb: "+rating.Count+" ("+postscore.RatingDumb+")</div>"; }
+									if (rating.Name === "Disagree")   { crapmenu.innerHTML += "<div style='display: inline-block; float: none;' class='button "+FR_FUN.calcPolarity(postscore.RatingDisagree)+"'>Rated Disagree: "+rating.Count+" ("+postscore.RatingDisagree+")</div>"; }
+									if (rating.Name === "Inform")     { crapmenu.innerHTML += "<div style='display: inline-block; float: none;' class='button "+FR_FUN.calcPolarity(postscore.RatingInform)+"'>Rated Informative: "+rating.Count+" ("+postscore.RatingInform+")</div>"; }
+									if (rating.Name === "Friendly")   { crapmenu.innerHTML += "<div style='display: inline-block; float: none;' class='button "+FR_FUN.calcPolarity(postscore.RatingFriendly)+"'>Rated Friendly: "+rating.Count+" ("+postscore.RatingFriendly+")</div>"; }
+									if (rating.Name === "Useful")     { crapmenu.innerHTML += "<div style='display: inline-block; float: none;' class='button "+FR_FUN.calcPolarity(postscore.RatingUseful)+"'>Rated Useful: "+rating.Count+" ("+postscore.RatingUseful+")</div>"; }
+									if (rating.Name === "Optimistic") { crapmenu.innerHTML += "<div style='display: inline-block; float: none;' class='button "+FR_FUN.calcPolarity(postscore.RatingOptimistic)+"'>Rated Optimistic: "+rating.Count+" ("+postscore.RatingOptimistic+")</div>"; }
+									if (rating.Name === "Artistic")   { crapmenu.innerHTML += "<div style='display: inline-block; float: none;' class='button "+FR_FUN.calcPolarity(postscore.RatingArtistic)+"'>Rated Artistic: "+rating.Count+" ("+postscore.RatingArtistic+")</div>"; }
+									if (rating.Name === "Late")       { crapmenu.innerHTML += "<div style='display: inline-block; float: none;' class='button "+FR_FUN.calcPolarity(postscore.RatingLate)+"'>Rated Late: "+rating.Count+" ("+postscore.RatingLate+")</div>"; }
+									if (rating.Name === "BadSpell")   { crapmenu.innerHTML += "<div style='display: inline-block; float: none;' class='button "+FR_FUN.calcPolarity(postscore.RatingBadSpell)+"'>Rated Bad Spelling: "+rating.Count+" ("+postscore.RatingBadSpell+")</div>"; }
+									if (rating.Name === "BadRead")    { crapmenu.innerHTML += "<div style='display: inline-block; float: none;' class='button "+FR_FUN.calcPolarity(postscore.RatingBadRead)+"'>Rated Bad Reading: "+rating.Count+" ("+postscore.RatingBadRead+")</div>"; }
+									if (rating.Name === "Zing")       { crapmenu.innerHTML += "<div style='display: inline-block; float: none;' class='button "+FR_FUN.calcPolarity(postscore.RatingZing)+"'>Rated Zing: "+rating.Count+" ("+postscore.RatingZing+")</div>"; }
+									if (rating.Name === "OIFY")       { crapmenu.innerHTML += "<div style='display: inline-block; float: none;' class='button "+FR_FUN.calcPolarity(postscore.RatingOIFY)+"'>Rated Pinknipple: "+rating.Count+" ("+postscore.RatingOIFY+")</div>"; }
+									if (rating.Name === "ProgKing")   { crapmenu.innerHTML += "<div style='display: inline-block; float: none;' class='button "+FR_FUN.calcPolarity(postscore.RatingProgKing)+"'>Rated Programming King: "+rating.Count+" ("+postscore.RatingProgKing+")</div>"; }
+									if (rating.Name === "LuaKing")    { crapmenu.innerHTML += "<div style='display: inline-block; float: none;' class='button "+FR_FUN.calcPolarity(postscore.RatingLuaKing)+"'>Rated Lua King: "+rating.Count+" ("+postscore.RatingLuaKing+")</div>"; }
+									if (rating.Name === "LuaHelp")    { crapmenu.innerHTML += "<div style='display: inline-block; float: none;' class='button "+FR_FUN.calcPolarity(postscore.RatingLuaHelp)+"'>Rated Lua Helper: "+rating.Count+" ("+postscore.RatingLuaHelp+")</div>"; }
+									if (rating.Name === "MapKing")    { crapmenu.innerHTML += "<div style='display: inline-block; float: none;' class='button "+FR_FUN.calcPolarity(postscore.RatingMapKing)+"'>Rated Mapping king: "+rating.Count+" ("+postscore.RatingMapKing+")</div>"; }
+									if (rating.Name === "Smarked")    { crapmenu.innerHTML += "<div style='display: inline-block; float: none;' class='button "+FR_FUN.calcPolarity(postscore.RatingSmarked)+"'>Rated Smarked: "+rating.Count+" ("+postscore.RatingSmarked+")</div>"; }
+									if (rating.Name === "Moustache")  { crapmenu.innerHTML += "<div style='display: inline-block; float: none;' class='button "+FR_FUN.calcPolarity(postscore.RatingMoustache)+"'>Rated Moustache: "+rating.Count+" ("+postscore.RatingMoustache+")</div>"; }
+								})
 							}
+							
                             crapmenu.innerHTML += "<div style='display: inline-block; float: none;' class='button "+FR_FUN.calcPolarity(postscore.Blacklisted)+"'>Blacklisted: "+PostTable[x].Blacklisted+" ("+postscore.Blacklisted+")</div>";
                             crapmenu.innerHTML += "<div style='display: inline-block; float: none;' class='button "+FR_FUN.calcPolarity(postscore.Whitelisted)+"'>Whitelisted: "+PostTable[x].Whitelisted+" ("+postscore.Whitelisted+")</div>";
                             myprick.childNodes[7].childNodes[5].appendChild(crapmenu);
