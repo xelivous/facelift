@@ -131,7 +131,7 @@ function FR_CFG_CREATE() {
             'FL_RatingWinner': ['INT', 20, 'Winner', 'Ratings', ['FO_PostStats']],
             'FL_RatingDumb': ['INT', -50, 'Dumb', 'Ratings', ['FO_PostStats']],
             'FL_RatingDisagree': ['INT', 0, 'Disagree', 'Ratings', ['FO_PostStats']],
-            'FL_RatingInform': ['INT', 20, 'Informative', 'Ratings', ['FO_PostStats']],
+            'FL_RatingInformative': ['INT', 20, 'Informative', 'Ratings', ['FO_PostStats']],
             'FL_RatingFriendly': ['INT', 20, 'Friendly', 'Ratings', ['FO_PostStats']],
             'FL_RatingUseful': ['INT', 10, 'Useful', 'Ratings', ['FO_PostStats']],
             'FL_RatingOptimistic': ['INT', -15, 'Optimistic', 'Ratings', ['FO_PostStats']],
@@ -365,7 +365,7 @@ function FR_FUN_CREATE() {
 				'Settings': ['FO_ScoreIgnoreOP'],
 				'One Time bonus': ['FL_BlueMember', 'FL_Moderator','FL_GoldMember','FL_BannedMember','FL_DefaultAva','FL_YourPost','FL_NewPost','FL_HasRatings','FL_ThreadOP'],
                 'Post Stats': ['FL_UserPostCnt','FL_MonthCount','FL_ImageCount','FL_EmoteCount','FL_QuoteCount','FL_MediaCount','FL_LinkCount','FL_LineCount','FL_BBCodeCount'],
-                'Ratings': ['FL_RatingAgree','FL_RatingFunny','FL_RatingWinner','FL_RatingDumb','FL_RatingDisagree','FL_RatingInform','FL_RatingFriendly','FL_RatingUseful','FL_RatingOptimistic','FL_RatingArtistic','FL_RatingLate','FL_RatingBadSpell','FL_RatingBadRead','FL_RatingZing','FL_RatingOIFY','FL_RatingProgKing','FL_RatingLuaKing','FL_RatingLuaHelp','FL_RatingMapKing','FL_RatingSmarked', 'FL_RatingMoustache']
+                'Ratings': ['FL_RatingAgree','FL_RatingFunny','FL_RatingWinner','FL_RatingDumb','FL_RatingDisagree','FL_RatingInformative','FL_RatingFriendly','FL_RatingUseful','FL_RatingOptimistic','FL_RatingArtistic','FL_RatingLate','FL_RatingBadSpell','FL_RatingBadRead','FL_RatingZing','FL_RatingOIFY','FL_RatingProgKing','FL_RatingLuaKing','FL_RatingLuaHelp','FL_RatingMapKing','FL_RatingSmarked', 'FL_RatingMoustache']
             },
             'STYLES': {
                 //'Threads': ['FS_Tawesomeness','FS_TawesomenessA','FS_TawesomenessC','FS_Tfaggotry','FS_TfaggotryA','FS_TfaggotryC'],
@@ -979,121 +979,12 @@ function FR_FUN_CREATE() {
             TotalScore = TotalScore + Scoredata.LineCount;
             Scoredata.BBCodeCount = FR_CFG.getInt("FL_BBCodeCount") * PostTable.BBCodeCount;
             TotalScore = TotalScore + Scoredata.BBCodeCount;
-
 			
-            //ratings, multiplied by rating count
-			Scoredata.RatingAgree = 0;
-			Scoredata.RatingFunny = 0;
-			Scoredata.RatingDumb = 0;
-			Scoredata.RatingDisagree = 0;
-			Scoredata.RatingInform = 0;
-			Scoredata.RatingFriendly = 0;
-			Scoredata.RatingUseful = 0;
-			Scoredata.RatingOptimistic = 0;
-			Scoredata.RatingArtistic = 0;
-			Scoredata.RatingLate = 0;
-			Scoredata.RatingBadSpell = 0;
-			Scoredata.RatingBadRead = 0;
-			Scoredata.RatingZing = 0;
-			Scoredata.RatingOIFY = 0;
-			Scoredata.RatingProgKing = 0;
-			Scoredata.RatingLuaKing = 0;
-			Scoredata.RatingLuaHelp = 0;
-			Scoredata.RatingMapKing = 0;
-			Scoredata.RatingSmarked = 0;
-			Scoredata.RatingWinner = 0;
-			Scoredata.RatingMoustache = 0;
-			
+			//Look at each rating for this post, factor in its multiplier, then add that to the post score.
 			if (PostTable.Ratings) {
 				PostTable.Ratings.forEach(function(rating) {
-					switch (rating.Name) {
-						case "Agree":
-							Scoredata.RatingAgree = FR_CFG.getInt("FL_RatingAgree") * rating.Count;
-							TotalScore = TotalScore + Scoredata.RatingAgree;
-							break;
-						case "Funny":
-							Scoredata.RatingFunny = FR_CFG.getInt("FL_RatingFunny") * rating.Count;
-							TotalScore = TotalScore + Scoredata.RatingFunny;
-							break;
-						case "Dumb":
-							Scoredata.RatingDumb = FR_CFG.getInt("FL_RatingDumb") * rating.Count;
-							TotalScore = TotalScore + Scoredata.RatingDumb;
-							break;
-						case "Disagree":
-							Scoredata.RatingDisagree = FR_CFG.getInt("FL_RatingDisagree") * rating.Count;
-							TotalScore = TotalScore + Scoredata.RatingDisagree;
-							break;
-						case "Inform":
-							Scoredata.RatingInform = FR_CFG.getInt("FL_RatingInform") * rating.Count;
-							TotalScore = TotalScore + Scoredata.RatingInform;
-							break;
-						case "Friendly":
-							Scoredata.RatingFriendly = FR_CFG.getInt("FL_RatingFriendly") * rating.Count;
-							TotalScore = TotalScore + Scoredata.RatingFriendly;
-							break;
-						case "Useful":
-							Scoredata.RatingUseful = FR_CFG.getInt("FL_RatingUseful") * rating.Count;
-							TotalScore = TotalScore + Scoredata.RatingUseful;
-							break;
-						case "Optimistic":
-							Scoredata.RatingOptimistic = FR_CFG.getInt("FL_RatingOptimistic") * rating.Count;
-							TotalScore = TotalScore + Scoredata.RatingOptimistic;
-							break;
-						case "Artistic":
-							Scoredata.RatingArtistic = FR_CFG.getInt("FL_RatingArtistic") * rating.Count;
-							TotalScore = TotalScore + Scoredata.RatingArtistic;
-							break;
-						case "Late":
-							Scoredata.RatingLate = FR_CFG.getInt("FL_RatingLate") * rating.Count;
-							TotalScore = TotalScore + Scoredata.RatingLate;
-							break;
-						case "BadSpell":
-							Scoredata.RatingBadSpell = FR_CFG.getInt("FL_RatingBadSpell") * rating.Count;
-							TotalScore = TotalScore + Scoredata.RatingBadSpell;
-							break;
-						case "BadRead":
-							Scoredata.RatingBadRead = FR_CFG.getInt("FL_RatingBadRead") * rating.Count;
-							TotalScore = TotalScore + Scoredata.RatingBadRead;
-							break;
-						case "Zing":
-							Scoredata.RatingZing = FR_CFG.getInt("FL_RatingZing") * rating.Count;
-							TotalScore = TotalScore + Scoredata.RatingZing;
-							break;
-						case "OIFY":
-							Scoredata.RatingOIFY = FR_CFG.getInt("FL_RatingOIFY") * rating.Count;
-							TotalScore = TotalScore + Scoredata.RatingOIFY;
-							break;
-						case "ProgKing":
-							Scoredata.RatingProgKing = FR_CFG.getInt("FL_RatingProgKing") * rating.Count;
-							TotalScore = TotalScore + Scoredata.RatingProgKing;
-							break;
-						case "LuaKing":
-							Scoredata.RatingLuaKing = FR_CFG.getInt("FL_RatingLuaKing") * rating.Count;
-							TotalScore = TotalScore + Scoredata.RatingLuaKing;
-							break;
-						case "LuaHelp":
-							Scoredata.RatingLuaHelp = FR_CFG.getInt("FL_RatingLuaHelp") * rating.Count;
-							TotalScore = TotalScore + Scoredata.RatingLuaHelp;
-							break;
-						case "MapKing":
-							Scoredata.RatingMapKing = FR_CFG.getInt("FL_RatingMapKing") * rating.Count;
-							TotalScore = TotalScore + Scoredata.RatingMapKing;
-							break;
-						case "Smarked":
-							Scoredata.RatingSmarked = FR_CFG.getInt("FL_RatingSmarked") * rating.Count;
-							TotalScore = TotalScore + Scoredata.RatingSmarked;
-							break;
-						case "Winner":
-							Scoredata.RatingWinner = FR_CFG.getInt("FL_RatingWinner") * rating.Count;
-							TotalScore = TotalScore + Scoredata.RatingWinner;
-							break;
-						case "Moustache":
-							Scoredata.RatingMoustache = FR_CFG.getInt("FL_RatingMoustache") * rating.Count;
-							TotalScore = TotalScore + Scoredata.RatingMoustache;
-							break;
-						default:
-							console.log("Unknown rating name: "+rating.Name);
-					}
+					Scoredata["Rating" + rating.Name] = FR_CFG.getInt("FL_Rating" + rating.Name) * rating.Count;
+					TotalScore = TotalScore + Scoredata["Rating" + rating.Name];
 				})
 			}
 
@@ -2614,7 +2505,7 @@ function FR_FUN_CREATE() {
 									if (rating.Name === "Winner")     { crapmenu.innerHTML += "<div style='display: inline-block; float: none;' class='button "+FR_FUN.calcPolarity(postscore.RatingWinner)+"'>Rated Winner: "+rating.Count+" ("+postscore.RatingWinner+")</div>"; }
 									if (rating.Name === "Dumb")       { crapmenu.innerHTML += "<div style='display: inline-block; float: none;' class='button "+FR_FUN.calcPolarity(postscore.RatingDumb)+"'>Rated Dumb: "+rating.Count+" ("+postscore.RatingDumb+")</div>"; }
 									if (rating.Name === "Disagree")   { crapmenu.innerHTML += "<div style='display: inline-block; float: none;' class='button "+FR_FUN.calcPolarity(postscore.RatingDisagree)+"'>Rated Disagree: "+rating.Count+" ("+postscore.RatingDisagree+")</div>"; }
-									if (rating.Name === "Inform")     { crapmenu.innerHTML += "<div style='display: inline-block; float: none;' class='button "+FR_FUN.calcPolarity(postscore.RatingInform)+"'>Rated Informative: "+rating.Count+" ("+postscore.RatingInform+")</div>"; }
+									if (rating.Name === "Informative"){ crapmenu.innerHTML += "<div style='display: inline-block; float: none;' class='button "+FR_FUN.calcPolarity(postscore.RatingInformative)+"'>Rated Informative: "+rating.Count+" ("+postscore.RatingInformative+")</div>"; }
 									if (rating.Name === "Friendly")   { crapmenu.innerHTML += "<div style='display: inline-block; float: none;' class='button "+FR_FUN.calcPolarity(postscore.RatingFriendly)+"'>Rated Friendly: "+rating.Count+" ("+postscore.RatingFriendly+")</div>"; }
 									if (rating.Name === "Useful")     { crapmenu.innerHTML += "<div style='display: inline-block; float: none;' class='button "+FR_FUN.calcPolarity(postscore.RatingUseful)+"'>Rated Useful: "+rating.Count+" ("+postscore.RatingUseful+")</div>"; }
 									if (rating.Name === "Optimistic") { crapmenu.innerHTML += "<div style='display: inline-block; float: none;' class='button "+FR_FUN.calcPolarity(postscore.RatingOptimistic)+"'>Rated Optimistic: "+rating.Count+" ("+postscore.RatingOptimistic+")</div>"; }
